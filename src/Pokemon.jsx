@@ -5,18 +5,14 @@ import Loader from "./components/Loader";
 import {AnimatePresence, motion} from "framer-motion";
 
 export default function Pokemon() {
+  const {modal, setHideModal, namePokemon, setNamePokemon} = useContext(PokemonsContext);
   const [pokemonData, setPokemonData] = useState({});
   const [typesPokemon, setTypesPokemon] = useState(null);
-  const {modal, setHideModal, namePokemon, setNamePokemon} =
-    useContext(PokemonsContext);
-  const [showPokemon, setShowPokemon] = useState(true);
-
-  console.log(pokemonData)
 
   const getPokemon = useMemo(async () => {
-    if (namePokemon === "") return;
+    console.log("getPokemon");
 
-    setShowPokemon(true);
+    if (namePokemon === "") return;
 
     const response = await axios(
       `https://pokeapi.co/api/v2/pokemon/${namePokemon}`
@@ -26,22 +22,15 @@ export default function Pokemon() {
     setPokemonData(response.data);
   }, [namePokemon]);
 
-  console.log("namePokemon: " + namePokemon)
-
   const handleClick = () => {
-    setShowPokemon(false)
-    setPokemonData({})
-    document.body.style.overflow = "";
+    setHideModal();
+    setPokemonData({});
+    setNamePokemon("");
   }
-
-  if (!modal || Object.keys(pokemonData).length === 0) {
-    return;
-  }
-
 
   return (
     <AnimatePresence>
-      {showPokemon ? (
+      {modal && Object.keys(pokemonData).length > 0 &&
         <div onClick={handleClick} className="pokemon__background">
           <motion.div
             onClick={handleClick}
@@ -50,9 +39,8 @@ export default function Pokemon() {
             animate={{scale: 1, opacity: 1}}
             exit={{
               scale: 0, opacity: 0,
-              // onAnimationEnd: hide,
             }}
-            transition={{duration: 1}}
+            transition={{duration: .2}}
             className="pokemon"
           >
             <button
@@ -69,11 +57,7 @@ export default function Pokemon() {
             <Stats pokemonData={pokemonData}/>
           </motion.div>
         </div>
-      ) : (
-        <div className="loading">
-          <Loader/>
-        </div>
-      )}
+      }
     </AnimatePresence>
   );
 }

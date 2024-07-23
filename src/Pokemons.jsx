@@ -11,7 +11,7 @@ export default function Pokemons() {
   const [pokemons, setPokemons] = useState([]);
   const [limit, setLimit] = useState(20);
   const listPokemons = usePokemons(limit);
-  const {modal} = useContext(PokemonsContext);
+  // const {modal} = useContext(PokemonsContext);
 
   useEffect(() => {
     setPokemons(listPokemons);
@@ -27,16 +27,10 @@ export default function Pokemons() {
     <>
       <article className="pokemons-wrapper">
         <div>
+          {/*все иконки сайта, у них есть баг, они спавняться все сразу, если вернуться на страницу*/}
           <SpawnIcons/>
         </div>
-
         <Pokemon />
-          {/*{modal && (*/}
-          {/*  <>*/}
-          {/*    <Pokemon />*/}
-          {/*  </>*/}
-          {/*)}*/}
-
         <FindPokemon
           limit={limit}
           pokemons={pokemons}

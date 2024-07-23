@@ -13,9 +13,20 @@ a {
   color: initial;
 }
 
-#root {
-  overflow: hidden;
+body {
+    background: linear-gradient(90deg, #131842, #e68369 50%, #131842);
 }
+
+#root {
+    overflow: hidden;
+}
+
+.body__hide {
+    overflow: hidden;
+    padding-right: 15px;
+}
+
+
 /* 
 @-webkit-keyframes ServiceAnimation {
   0% {
@@ -67,7 +78,6 @@ a {
   font-family: "Poppins", sans-serif;
 
   min-height: 100vh;
-  background: linear-gradient(90deg, #131842, #e68369 50%, #131842);
   /* background-size: 500% 500%; */
   /* -webkit-animation: ServiceAnimation 10s ease infinite;
   -moz-animation: ServiceAnimation 10s ease infinite;
@@ -240,7 +250,7 @@ a {
   width: 100%;
   height: 100%;
   background: rgb(0, 0, 0, 80%);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
@@ -419,6 +429,11 @@ a {
   font-size: 5em;
   color: whitesmoke;
   z-index: 1000;
+}
+
+.pokemon__text {
+    font-size: 4em;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {

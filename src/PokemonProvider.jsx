@@ -7,12 +7,14 @@ export default function PokemonProvider({ children }) {
 
   const setShowModal = () => {
     setModal(true);
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("body__hide");
+    // document.body.style.overflow = "hidden";
   };
 
   const setHideModal = () => {
     setModal(false);
-
+    document.body.classList.remove("body__hide");
+    // document.body.style.overflow = "";
   };
 
   return (
