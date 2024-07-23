@@ -15,10 +15,12 @@ export default function SpawnIcons() {
     if (interval.current !== null) return;
 
     interval.current = setInterval(() => {
-      setIconID((iconID) => {
-        setArr((arr) => [...arr, iconID]);
-        return iconID + 1;
-      });
+      if (document.hasFocus()) {
+        setIconID((iconID) => {
+          setArr((arr) => [...arr, iconID]);
+          return iconID + 1;
+        });
+      }
     }, 1000);
   }, []);
 

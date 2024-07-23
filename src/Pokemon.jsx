@@ -30,7 +30,7 @@ export default function Pokemon() {
 
   return (
     <AnimatePresence>
-      {modal && Object.keys(pokemonData).length > 0 &&
+      {modal && Object.keys(pokemonData).length > 0 ? (
         <div onClick={handleClick} className="pokemon__background">
           <motion.div
             onClick={handleClick}
@@ -56,7 +56,12 @@ export default function Pokemon() {
             <Sprites pokemonData={pokemonData}/>
             <Stats pokemonData={pokemonData}/>
           </motion.div>
-        </div>
+        </div>) : (
+        modal && (
+          <div className={"loading"}>
+            <Loader/>
+          </div>)
+      )
       }
     </AnimatePresence>
   );

@@ -1,22 +1,40 @@
-import React from "react";
+import React, {useMemo} from "react";
 import usePokemons from "../hooks/usePokemons";
 
-export default function FindPokemon({ limit, pokemons, setPokemons }) {
-  const listPokemons = usePokemons(limit);
+export default function FindPokemon(props) {
+  // {allPokemons, limit, pokemons, setPokemons, setInputText }
+  const listPokemons = usePokemons(props.limit);
+
+  useMemo(() => {
+    console.log("Вызов внутри МЕМО")
+
+    let temp = listPokemons.filter(
+      (pokemon) =>
+        pokemon.name.slice(0, props.inputText.length).toLowerCase() ===
+        props.inputText.toLowerCase()
+    );
+
+    props.setInputText(props.inputText.toLowerCase());
+    props.setPokemons(temp);
+  }, [listPokemons])
+
+
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value.trim().length === 0) {
-      setPokemons(listPokemons);
+      props.setInputText("");
+      props.setPokemons(listPokemons);
       return;
     }
 
-    let temp = pokemons.filter(
+    let temp = listPokemons.filter(
       (pokemon) =>
         pokemon.name.slice(0, e.target.value.length).toLowerCase() ===
         e.target.value.toLowerCase()
     );
-    setPokemons(temp);
+
+    props.setInputText(e.target.value.toLowerCase());
+    props.setPokemons(temp);
   };
 
   return (

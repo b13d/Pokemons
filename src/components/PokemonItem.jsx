@@ -36,6 +36,7 @@ export default function PokemonItem({ name, url }) {
         className="pokemon-item__container"
       >
         <img
+          loading={"lazy"}
           className="pokemon-item__container-sprite"
           src={pokemonData.sprites.other.home.front_default}
           alt="sprite-pokemon"

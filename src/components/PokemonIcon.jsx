@@ -17,7 +17,8 @@ export default function PokemonIcon({ id, handleCheck }) {
     <motion.div
       className="pokemon-icon"
       initial={{
-        y: Math.floor((Math.random() * document.body.clientHeight) / 4),
+        // y: Math.floor((Math.random() * document.body.clientHeight) / 4),
+        y: 0,
         x: Math.floor(Math.random() * document.body.clientWidth),
         rotate: rnd > 50 ? [-15, 0, 15] : [15, 0, -15],
         opacity: 1,
@@ -27,7 +28,9 @@ export default function PokemonIcon({ id, handleCheck }) {
         opacity: 0,
       }}
       transition={{
-        duration: Math.random() * 20 + 30,
+        duration: document.body.clientHeight / 100,
+        ease: "linear",
+        type: "tween",
       }}
       onAnimationComplete={() => {
         handleCheck(id);
