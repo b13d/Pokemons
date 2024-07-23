@@ -8,26 +8,26 @@ export default function PokemonParametrs({ pokemonData, arrColors, name }) {
 
   const pokemonStats = (pokemonDataValue, description, unit) => (
     <div>
-      <p className="pokemon-parametrs__specifications-significance">
+      <p className="">
         {pokemonDataValue} {unit}
       </p>
-      <p className="pokemon-parametrs__specifications-description">
+      <p className="">
         {description}
       </p>
     </div>
   );
 
   return (
-    <section className="pokemon-parametrs">
-      <h1 className="pokemon-parametrs__name">♦ {name} ♦</h1>
+    <section className="text-3xl flex relative flex-col items-center justify-center gap-2">
+      <h1 className="uppercase font-bold">♦ {name} ♦</h1>
 
-      <div className="pokemon-parametrs__types">
+      <div className="flex gap-3">
         {pokemonData.types.map((type, index) => {
           return (
             <button
               key={pokemonData.name + index}
               style={{ background: arrColors[index] }}
-              className="button button__pokemon-type"
+              className="p-2 rounded-xl"
             >
               {type.type.name}
             </button>
@@ -35,7 +35,7 @@ export default function PokemonParametrs({ pokemonData, arrColors, name }) {
         })}
       </div>
 
-      <div className="pokemon-parametrs__specifications">
+      <div className="flex font-medium gap-4 text-justify w-[100%] justify-around">
         {pokemonStats(pokemonData.height / 10, "Athura", "M")}
         {pokemonStats(pokemonData.weight / 10, "Peso", "KG")}
       </div>
@@ -45,7 +45,7 @@ export default function PokemonParametrs({ pokemonData, arrColors, name }) {
           setNamePokemon(name);
           setShowModal();
         }}
-        className="button button__pokemon-details"
+        className="bg-[rgb(0,0,0,.35)] font-bold px-4 py-4 rounded-md shadow-lg my-6"
       >
         Show details
       </button>

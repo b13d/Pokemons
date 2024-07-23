@@ -15,7 +15,7 @@ export default function PokemonIcon({ id, handleCheck }) {
 
   return (
     <motion.div
-      className="pokemon-icon"
+      className="absolute z-0"
       initial={{
         // y: Math.floor((Math.random() * document.body.clientHeight) / 4),
         y: 0,

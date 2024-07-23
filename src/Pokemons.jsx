@@ -29,7 +29,7 @@ export default function Pokemons() {
 
   return (
     <>
-      <article className="pokemons-wrapper">
+      <article className="flex flex-col ">
         <div>
           {/*все иконки сайта, у них есть баг, они спавняться все сразу, если вернуться на страницу*/}
           <SpawnIcons/>

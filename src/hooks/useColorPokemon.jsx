@@ -3,68 +3,68 @@ function getColor(type) {
 
   switch (type) {
     case "grass":
-      color = "#1f7f1c";
+      color = "#1f7f1c80";
       break;
 
     case "fire":
-      color = "tomato";
+      color = "rgba(245,122,78,0.8)";
       break;
 
     case "water":
-      color = "#3498f5";
+      color = "#3498f580";
       break;
 
     case "poison":
-      color = "#a465bf";
+      color = "#a465bf80";
       break;
 
     case "flying":
-      color = "#5F89F5";
+      color = "#5F89F580";
       break;
 
     case "bug":
-      color = "orange";
+      color = "#ffedd580";
       break;
 
     case "normal":
-      color = "gray";
+      color = "rgba(65,65,65,0.8)";
       break;
     case "fighting":
-      color = "#C86F42";
+      color = "#C86F4280";
       break;
     case "electric":
-      color = "#BFA546";
+      color = "#BFA54680";
       break;
     case "ground":
-      color = "#947944";
+      color = "#94794480";
       break;
     case "psychic":
-      color = "#bf5b99";
+      color = "#bf5b9980";
       break;
     case "rock":
-      color = "#5c7a7a";
+      color = "#5c7a7a80";
       break;
     case "ice":
-      color = "#71ACC2";
+      color = "#71ACC280";
       break;
     case "dragon":
-      color = "#50A495";
+      color = "#50A49580";
       break;
     case "ghost":
-      color = "#9D70B1";
+      color = "#9D70B180";
       break;
     case "dark":
-      color = "#86538C";
+      color = "#86538C80";
       break;
     case "steel":
-      color = "#5B8196";
+      color = "#5B819680";
       break;
     case "fairy":
-      color = "#DAB0D4";
+      color = "#DAB0D480";
       break;
 
     default:
-      color = "#A8D2A2";
+      color = "#A8D2A280";
       break;
   }
 

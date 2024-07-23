@@ -38,10 +38,10 @@ export default function FindPokemon(props) {
   };
 
   return (
-    <div className="findpokemon">
+    <div className="flex justify-center items-center m-32">
       <input
         onChange={(e) => handleChange(e)}
-        className="findpokemon__input"
+        className="text-white border-none outline-0 p-4 w-[80%] rounded-2xl text-2xl bg-[rgb(0,0,0,.5)]"
         type="search"
         placeholder="Введите имя покемона..."
       />

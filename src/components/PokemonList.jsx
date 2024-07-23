@@ -21,7 +21,7 @@ export default function PokemonList({
 
   return (
     <>
-      <article className="pokemon-list">
+      <article className="grid z-[5] grid-cols-[1fr,1fr,1fr] gap-10 max-w-[1000px] m-auto grid">
         {pokemons.map((pokemon) => {
           return (
             <PokemonItem
@@ -35,7 +35,7 @@ export default function PokemonList({
       </article>
       <div style={{textAlign: "center"}}>
         <button
-          className="button button__show-pokemons"
+          className="max-w-[100px] my-16"
           onClick={() => handleClickShowMore()}
         >
           <motion.img

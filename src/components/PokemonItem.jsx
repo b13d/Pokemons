@@ -24,20 +24,20 @@ export default function PokemonItem({ name, url }) {
   return pokemonData ? (
     <div
       style={{
-        backgroundImage: `linear-gradient(black, ${arrColors[0]}  200%)`,
+        backgroundImage: `linear-gradient(rgb(0,0,0,.8), ${arrColors[0]}  100%)`,
       }}
-      className="pokemon-item"
+      className="z-10 justify-end w-[240px] h-[280px] rounded-2xl text-white flex flex-col"
     >
       <div
         onClick={() => {
           setNamePokemon(pokemonData.name);
           setShowModal();
         }}
-        className="pokemon-item__container"
+        className="relative flex flex-col items-center justify-center bg-white rounded-md shadow-lg"
       >
         <img
           loading={"lazy"}
-          className="pokemon-item__container-sprite"
+          className="absolute top-[-160px] max-w-[160px]"
           src={pokemonData.sprites.other.home.front_default}
           alt="sprite-pokemon"
         />

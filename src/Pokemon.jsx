@@ -22,7 +22,12 @@ export default function Pokemon() {
     setPokemonData(response.data);
   }, [namePokemon]);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    console.log(e);
+
     setHideModal();
     setPokemonData({});
     setNamePokemon("");
@@ -31,9 +36,9 @@ export default function Pokemon() {
   return (
     <AnimatePresence>
       {modal && Object.keys(pokemonData).length > 0 ? (
-        <div onClick={handleClick} className="pokemon__background">
+        <div onClick={handleClick} className="bg-[rgb(0,0,0,.8)] w-[100%] h-[100%] fixed top-0 left-0 z-10">
           <motion.div
-            onClick={handleClick}
+            // onClick={handleClick}
             key={namePokemon}
             initial={{scale: 0, opacity: 0}}
             animate={{scale: 1, opacity: 1}}
@@ -41,20 +46,18 @@ export default function Pokemon() {
               scale: 0, opacity: 0,
             }}
             transition={{duration: .2}}
-            className="pokemon"
+            className="z-[100] text-white w-fit h-fit bg-[rgb(0,0,0,.25)] p-12 right-0 left-0 top-0 bottom-0 rounded-[10px] fixed font-white m-auto uppercase text-4xl flex justify-center items-center gap-12"
           >
+            <Sprites pokemonData={pokemonData}/>
+            <Stats pokemonData={pokemonData}/>
             <button
-              className="pokemon__close-modal"
+              className="items-start text-red-600 self-start text-6xl bg-[rgb(245,33,33,.1)] rounded-[50%] px-5 py-3"
               onClick={() => {
-                setNamePokemon("");
                 handleClick();
               }}
             >
               &#10006;
             </button>
-
-            <Sprites pokemonData={pokemonData}/>
-            <Stats pokemonData={pokemonData}/>
           </motion.div>
         </div>) : (
         modal && (
@@ -70,14 +73,14 @@ export default function Pokemon() {
 function Sprites(props) {
   return (
     <div>
-      <div className="pokemon__sprites">
+      <div className="flex flex-col gap-2">
         <img
-          className="pokemon__sprites-sprite"
+          className="w-[150px]"
           src={props.pokemonData.sprites.other.showdown.front_default}
           alt="pokemon-sprite"
         />
         <img
-          className="pokemon__sprites-sprite"
+          className="w-[150px]"
           src={props.pokemonData.sprites.other.showdown.back_default}
           alt="pokemon-sprite"
         />
